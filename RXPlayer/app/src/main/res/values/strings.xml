@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RX Player</string>
+    <string name="album">album</string>
+    <string name="elapsedTime">0:11</string>
+    <string name="remainingTime">-1:49</string>
+    <string name="singer">BeckyG</string>
+    <string name="name">Can\'t Stop Dancin\'</string>
+</resources>
