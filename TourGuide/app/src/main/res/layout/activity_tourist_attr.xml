@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2f979090"
+    tools:context="com.example.rohanpatil.tourguide.TouristAttrActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="4dp"
+        android:orientation="vertical"
+
+
+        >
+        /** Item1 **/
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="16dp"
+            android:background="#ef0010a1"
+            android:elevation="14dp"
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/gateway"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+
+                android:text="@string/gateway_of_india"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+
+        </FrameLayout>
+
+
+        /** Item2 **/
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="16dp"
+            android:background="#ef0010a1"
+            android:elevation="14dp"
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/florafountain"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+
+                android:text="@string/flora_fountain"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+
+        </FrameLayout>
+
+
+        /** Item3 **/
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="16dp"
+            android:background="#ef0010a1"
+            android:elevation="14dp"
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/churchg"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+
+                android:text="@string/church_gate"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+
+        </FrameLayout>
+
+
+        /** Item4 **/
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="16dp"
+            android:background="#ef0010a1"
+            android:elevation="14dp"
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/nnp"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+
+                android:text="@string/nariman_point"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+
+        </FrameLayout>
+
+
+        /** Item5 **/
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="16dp"
+            android:background="#ef0010a1"
+            android:elevation="14dp"
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/mmrc"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+                android:text="@string/mahalakshmi_racecourse"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+
+        </FrameLayout>
+
+
+        /** Item6 **/
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="16dp"
+            android:background="#ef0010a1"
+            android:elevation="14dp"
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/ssgnp"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+
+                android:text="@string/sanjay_gandhi_national_park"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+
+        </FrameLayout>
+
+
+        /** Item7 **/
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_margin="16dp"
+            android:background="#ef0010a1"
+            android:elevation="14dp"
+
+            >
+
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/pwl"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+
+                android:text="@string/powai_lake"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

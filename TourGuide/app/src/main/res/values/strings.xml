@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TourGuide</string>
+    <string name="gateway_of_india">Gateway Of India</string>
+    <string name="flora_fountain">Flora Fountain</string>
+    <string name="church_gate">Church Gate</string>
+    <string name="nariman_point">Nariman Point</string>
+    <string name="mahalakshmi_racecourse">Mahalakshmi Racecourse</string>
+    <string name="sanjay_gandhi_national_park">Sanjay Gandhi National Park</string>
+    <string name="powai_lake">Powai Lake</string>
+    <string name="sample">list_view_text</string>
+</resources>
