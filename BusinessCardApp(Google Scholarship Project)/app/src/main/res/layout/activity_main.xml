@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rohanpatil.businesscardapp.MainActivity"
+    android:background="@drawable/bgg"
+    android:gravity="center_horizontal"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="@dimen/descripLL_mt"
+    android:id="@+id/descripLL">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/logo_w"
+        android:layout_height="@dimen/logo_h"
+
+        android:background="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/myraidpro"
+        android:text="@string/company"
+        android:textColor="@color/white"
+        android:textSize="44sp" />
+    <TextView
+        android:id="@+id/descripT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="@string/visual_art_design"
+        android:textColor="@color/gray"
+        android:textSize="15sp" />
+
+
+
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textColor="#414142"
+        android:fontFamily="@font/myraidpro"
+        android:layout_below="@id/descripLL"
+        android:layout_marginTop="@dimen/name_mt"
+        android:layout_marginStart="@dimen/name_ms"
+        android:textSize="24sp"
+        />
+    <TextView
+        android:id="@+id/name_descrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name_descrip"
+        android:textAllCaps="true"
+        android:textColor="@color/dark_gray"
+        android:fontFamily="@font/lato"
+        android:layout_below="@id/name"
+        android:layout_marginLeft="@dimen/name_descrip_ml"
+        android:textSize="14sp"
+    />
+
+
+
+    <LinearLayout
+        android:id="@+id/detailsLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@id/name"
+        android:layout_marginTop="@dimen/detailsLL_mt" >
+
+        <TextView
+
+            android:id="@+id/detail1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number"
+            android:textColor="@color/dark_gray"
+            android:layout_marginStart="@dimen/detail1_ms"
+            android:fontFamily="@font/lato"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/detail2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textColor="@color/dark_gray"
+            android:layout_marginTop="@dimen/detail2_mt"
+            android:layout_marginLeft="@dimen/detail2_ml"
+            android:fontFamily="@font/lato"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/detail3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/website"
+            android:layout_marginLeft="@dimen/detail3_ml"
+            android:textColor="@color/dark_gray"
+            android:layout_marginTop="@dimen/detail3_mt"
+            android:fontFamily="@font/lato"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/detail4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            android:textColor="@color/dark_gray"
+            android:layout_marginTop="@dimen/detail4_mt"
+            android:fontFamily="@font/lato"
+            android:textSize="20sp"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

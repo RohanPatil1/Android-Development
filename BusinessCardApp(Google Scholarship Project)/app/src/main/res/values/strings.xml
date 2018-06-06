@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BusinessCardApp</string>
+    <string name="visual_art_design">VISUAL ART &amp; DESIGN</string>
+    <string name="name">MICHAL JOHNS</string>
+    <string name="address">328 Virginia Ave</string>
+    <string name="website">www.prorohan9.com</string>
+    <string name="email">prorohan9@gmail.com</string>
+    <string name="number">+1-202-555-0118</string>
+    <string name="name_descrip">Graphic Designer</string>
+    <string name="company">Nimify</string>
+</resources>

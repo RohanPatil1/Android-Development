@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="descripLL_mt">90dp</dimen>
+    <dimen name="logo_w">70dp</dimen>
+    <dimen name="logo_h">65dp</dimen>
+    <dimen name="name_mt">123dp</dimen>
+    <dimen name="name_ms">60dp</dimen>
+    <dimen name="name_descrip_ml">60dp</dimen>
+    <dimen name="detailsLL_mt">62dp</dimen>
+    <dimen name="detail1_ms">9dp</dimen>
+    <dimen name="detail2_mt">15dp</dimen>
+    <dimen name="detail2_ml">25dp</dimen>
+    <dimen name="detail3_ml">21dp</dimen>
+    <dimen name="detail3_mt">15dp</dimen>
+    <dimen name="detail4_mt">15dp</dimen>
+</resources>
