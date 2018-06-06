@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="parentLL_mt">20dp</dimen>
+    <dimen name="parentLL_p">16dp</dimen>
+    <dimen name="q1_ts">24sp</dimen>
+    <dimen name="submit_mt">25dp</dimen>
+    <dimen name="submit_mb">15dp</dimen>
+    <dimen name="q4_mr">5dp</dimen>
+    <dimen name="q4_t_mt">35dp</dimen>
+    <dimen name="q4_t_ts">24sp</dimen>
+    <dimen name="edit_text_mt">15dp</dimen>
+    <dimen name="question3_ts">24sp</dimen>
+    <dimen name="question3_mt">35dp</dimen>
+    <dimen name="radio_ts">16sp</dimen>
+    <dimen name="q2_ll_mr">70dp</dimen>
+    <dimen name="question_ts">24sp</dimen>
+    <dimen name="question2_mt">24dp</dimen>
+    <dimen name="ll_parent_mr">100dp</dimen>
+    <dimen name="ll_parent_mt">10dp</dimen>
+    <dimen name="q1_op_ts">16sp</dimen>
+</resources>

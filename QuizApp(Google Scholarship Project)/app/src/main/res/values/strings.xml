@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="question1">Which of them are  regarded as Gods in the game God OF War ?</string>
+    <string name="question2">Which is highest grossing animated movie of all time ?</string>
+    <string name="question3">How many times did England won the World Cup in Cricket ?</string>
+    <string name="submit">Submit</string>
+    <string name="q4_op4"><![CDATA[AT&T]]></string>
+    <string name="q4_op3">Adobe</string>
+    <string name="q4_op2">Microsoft</string>
+    <string name="q4_op1">Google</string>
+    <string name="question4">Which of the following company\'s CEO is not an Indian?</string>
+    <string name="edit_text_hint">Enter The Number...</string>
+    <string name="q3_op4">WreckIt Ralph!</string>
+    <string name="q3_op2">Frozen</string>
+    <string name="q3_op3">Despicable Me 3</string>
+    <string name="q3_op1">Minions</string>
+    <string name="q1_op1">Zeus</string>
+    <string name="q1_op2">Kronos</string>
+    <string name="q1_op3">Hercules</string>
+    <string name="q1_op4">Hades</string>
+</resources>
