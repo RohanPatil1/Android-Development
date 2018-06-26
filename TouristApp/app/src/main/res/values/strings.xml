@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">TouristApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="food1">Pav Bhaji</string>
+    <string name="food2">Dosa</string>
+    <string name="food3">Samosa</string>
+    <string name="food4">Falooda</string>
+    <string name="event1">Ganesh Festival</string>
+    <string name="event2">Holi</string>
+    <string name="event3">Diwali</string>
+    <string name="event4">Janmashtami</string>
+    <string name="sight1">CSMT</string>
+    <string name="sight2">GateWay Of India</string>
+    <string name="sight3">Haji Ali Dargh</string>
+    <string name="sight4">Marine Drive</string>
+    <string name="tab1">Food</string>
+    <string name="tab2">Events</string>
+    <string name="tab3">Hotels</string>
+    <string name="tab4">Sights</string>
+    <string name="toolbar_title">Mumbai</string>
+    <string name="hotel1">Taj Hotel</string>
+    <string name="hotel2">Hotel Sahara Star</string>
+    <string name="hotel3">Hotel Regency</string>
+    <string name="hotel4">Four Season Hotel</string>
+    <string name="dummy_text">Dummy</string>
+</resources>

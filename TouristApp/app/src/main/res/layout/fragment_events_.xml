@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/fragment_ll_mt"
+        android:layout_marginLeft="@dimen/fragment_ll_ml"
+        android:orientation="vertical"
+        tools:context=".Events_Fragment">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/event_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+        <!---Extra Padding Required For Last Card -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/extra_padding"
+            />
+    </LinearLayout>
+</ScrollView>
