@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".AdminActivty">
+
+        <EditText
+            android:id="@+id/fileNameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/selectBtn"
+            android:layout_margin="16dp"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/selectBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/select_file" />
+
+        <Spinner
+            android:id="@+id/sectionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="17dp" />
+
+
+        <TextView
+            android:id="@+id/notifyTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:maxLines="5"
+            android:text="@string/no_file_selected"
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:id="@+id/spinnerSelection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:maxLines="5"
+            android:text="@string/spiiner_value"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/uploadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/upload" />
+
+        <Button
+            android:id="@+id/goList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/listview" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarAdmin"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/adView"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp" />
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/adUnitId" />
+</RelativeLayout>

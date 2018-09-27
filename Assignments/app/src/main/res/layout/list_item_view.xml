@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="16dp"
+    android:maxLines="3"
+    android:textAlignment="center"
+    android:background="@drawable/item_bg"
+    android:fontFamily="@font/lato"
+    android:padding="16dp"
+    android:text="@string/name_test"
+    android:textColor="@color/white"
+    android:textSize="24sp" />
+
+
+
