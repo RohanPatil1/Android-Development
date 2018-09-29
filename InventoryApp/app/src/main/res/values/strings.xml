@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">InventoryApp</string>
+    <string name="insert_new">INSERT NEW</string>
+    <string name="show_stocks">SHOW STOCKS</string>
+    <string name="delete_all_stocks">DELETE ALL STOCKS</string>
+    <string name="enter_product_name">Enter Product Name...</string>
+    <string name="enter_product_price">Enter Product Price...</string>
+    <string name="plus">+</string>
+    <string name="_0">0</string>
+    <string name="minus">-</string>
+    <string name="enter_supplier_name">Enter Supplier Name...</string>
+    <string name="enter_suppliernumber">Enter SupplierNumber...</string>
+    <string name="add_it">ADD IT</string>
+    <string name="delete_it">DELETE IT</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="call">CALL</string>
+    <string name="dummy_text1">MSI GL62M</string>
+    <string name="divider">|</string>
+    <string name="dollar">$</string>
+    <string name="dummy2">1200</string>
+    <string name="sale">SALE</string>
+    <string name="_19">19</string>
+    <string name="dummy3">Micro Star International</string>
+    <string name="_9876543320">9876543320</string>
+    <string name="warning">Warning!</string>
+</resources>
