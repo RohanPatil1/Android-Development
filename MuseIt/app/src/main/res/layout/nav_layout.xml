@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DADADA"
+    android:clickable="true"
+    android:elevation="@dimen/elevation_nav"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_nav">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_180dp"
+        android:background="#f3d10808"
+        android:elevation="@dimen/elevation_6dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_120dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/profile" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/nav_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

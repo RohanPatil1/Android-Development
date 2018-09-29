@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/playingbg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:theme="@style/AppTheme"
+    tools:context=".PlayingActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mt_15dp">
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="@dimen/back_btn_w"
+            android:layout_height="@dimen/back_btn_h"
+            android:layout_marginLeft="@dimen/ml_12dp"
+            android:layout_marginTop="@dimen/mt_1dp"
+            android:background="@drawable/back"
+            android:onClick="goMain" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/album_playing"
+        android:layout_width="@dimen/album_width"
+        android:layout_height="@dimen/album_height"
+        android:layout_marginTop="@dimen/mt_60dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/album2" />
+
+    <TextView
+        android:id="@+id/name_playing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="@string/name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ts_39sp" />
+
+    <TextView
+        android:id="@+id/descrip_playing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="@string/singer"
+        android:textColor="@color/nav_color"
+        android:textSize="@dimen/ts_29sp" />
+
+    <SeekBar
+        android:id="@+id/positionBar"
+        android:layout_width="@dimen/width_300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mt_30dp"
+        android:progressDrawable="@drawable/progress"
+        android:thumb="@drawable/thumb" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/elapsedTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="@string/elapsedTime"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ml_20dp">
+
+        <Button
+            android:id="@+id/playBtn"
+            android:layout_width="@dimen/width_43dp"
+            android:layout_height="@dimen/height_43dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ml_152dp"
+            android:layout_marginStart="@dimen/ms_152dp"
+            android:background="@drawable/play" />
+
+        <Button
+            android:layout_width="@dimen/width_40dp"
+            android:layout_height="@dimen/height_40dp"
+            android:layout_marginLeft="@dimen/ml_79dp"
+            android:background="@drawable/prev" />
+
+        <Button
+            android:layout_width="@dimen/width_40dp"
+            android:layout_height="@dimen/height_40dp"
+            android:layout_marginLeft="@dimen/ml_30dp"
+            android:layout_toRightOf="@+id/playBtn"
+            android:background="@drawable/next" />
+
+    </RelativeLayout>
+</LinearLayout>
