@@ -1,0 +1,26 @@
+ # Assignments App 
+  ![iconimage](https://i.ibb.co/vhNQ2Sv/ic-logo.png)  
+  
+# Componets Used
+- Firebase Real-time Database
+- ViewPager
+- RecyclerView
+- Fragments
+- Firebase Cloud Messaging 
+
+ # Options Menu
+ - Admin Panel - To Upload PDF Files.
+- FAQs -Coming Soon.
+- Check For Update - For Latest Update through download Link.
+
+
+
+ # Working
+ ![s1image](https://i.imgur.com/QwEhHRj.gif) 
+ 
+ **After Proper Credentials, This How I Upload Files To Firebase**
+ 
+ ![s2image](https://i.imgur.com/Bk6aWjL.gif) 
+ 
+ 
+
