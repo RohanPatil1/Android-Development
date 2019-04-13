@@ -5,5 +5,5 @@
 - App UI.
 - Plays Music using MediaPlayer class.
 
-**This is one of the first app I created as a begineer in Android Development.**
+**This was one of the first app I created as a begineer in Android Development.**
 
