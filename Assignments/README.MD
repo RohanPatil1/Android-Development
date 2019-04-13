@@ -18,7 +18,7 @@
  # Working
  ![s1image](https://i.imgur.com/QwEhHRj.gif) 
  
- **After Proper Credentials, This How I The Admin Uploads Files To Firebase**
+ **After Proper Credentials, This How The Admin Uploads Files To Firebase**
  
  ![s2image](https://i.imgur.com/Bk6aWjL.gif) 
  
