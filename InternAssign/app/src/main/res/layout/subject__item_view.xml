@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_below="@id/upgradeCardView"
+    android:layout_marginLeft="4dp"
+    android:layout_marginTop="18dp"
+    android:layout_marginRight="4dp"
+    android:background="@color/white"
+    android:elevation="18dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:background="@color/dark_grey" />
+
+            <ImageView
+                android:id="@+id/subjectImageView"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/subject1" />
+
+            <TextView
+                android:id="@+id/subjectTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/subjectImageView"
+                android:fontFamily="sans-serif-light"
+                android:paddingTop="8dp"
+                android:text="@string/text_example"
+                android:textColor="#5C5B5B"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/subjectTextView"
+                android:layout_toEndOf="@id/subjectImageView"
+                android:src="@drawable/progress" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

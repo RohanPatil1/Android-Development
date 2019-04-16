@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="toolbarTitle">Self Study</string>
+    <string name="upgrade_now">UPGRADE NOW</string>
+    <string name="subjects">Subjects</string>
+    <string name="text_example">Text Example</string>
+</resources>

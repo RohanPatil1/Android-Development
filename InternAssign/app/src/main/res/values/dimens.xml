@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nav_width">280dp</dimen>
+    <dimen name="ts_24sp">24sp</dimen>
+    <dimen name="banner_height">230dp</dimen>
+    <dimen name="giftW">66dp</dimen>
+    <dimen name="giftH">66dp</dimen>
+    <dimen name="ts_14sp">14sp</dimen>
+</resources>
