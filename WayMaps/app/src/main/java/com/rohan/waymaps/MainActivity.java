@@ -1,22 +1,31 @@
 package com.rohan.waymaps;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
@@ -30,7 +39,6 @@ import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
-import com.mapbox.mapboxsdk.location.modes.CameraMode;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -39,19 +47,25 @@ import com.mapbox.services.android.navigation.ui.v5.NavigationLauncher;
 import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions;
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute;
 import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute;
+import com.rohan.waymaps.Adapter.PlacesAdapter;
+import com.rohan.waymaps.DataModel.Place;
 import com.rohan.waymaps.RemoteUtils.Constants;
 import com.rohan.waymaps.RemoteUtils.GMapServices;
 import com.rohan.waymaps.pojo.MyPlaces;
 import com.rohan.waymaps.pojo.Result;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.view.View.GONE;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, MapboxMap.OnMapClickListener {
+
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, MapboxMap.OnMapClickListener, PlacesAdapter.OnPlaceClickListener {
 
 
     private MapView mapView;
@@ -71,9 +85,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Location originLocation;
     private Point originPosition;
     private Marker gMarker;
-
+    private String placeType;
     FloatingActionButton searchFAB;
     Button start_btn;
+    ToggleButton toggle_btn;
+    RelativeLayout loadingLayout;
+    Double currLAT, currLONG;
+    List<Place> dataList = new ArrayList<Place>();
+    PlacesAdapter placeAdapter;
+    private BottomSheetBehavior bottomSheetBehavior;
+    private CoordinatorLayout bottomSheetLayout;
+    private RecyclerView placesRecyclerView;
+    TextView btm_placeName;
+
+    RelativeLayout bottomLoading;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,13 +107,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
 
 
+        bottomLoading = findViewById(R.id.bottomLoading);
+        bottomLoading.setVisibility(View.VISIBLE);
         mapView = findViewById(R.id.mapView);
         start_btn = findViewById(R.id.button);
         mapView.getMapAsync(mapboxMap -> MainActivity.this.mapboxMap = mapboxMap);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
+        loadingLayout = findViewById(R.id.loading);
+        loadingLayout.setVisibility(View.VISIBLE);
         mServices = Constants.getGoogleServices();
-
+        bottomSheetLayout = findViewById(R.id.bottomSheet);
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
+        toggle_btn = findViewById(R.id.toggleButton);
+        placeAdapter = new PlacesAdapter(this, dataList, this);
+        placesRecyclerView = findViewById(R.id.placesRecyclerView);
+        placesRecyclerView.setAdapter(placeAdapter);
+        placesRecyclerView.setVisibility(GONE);
+        btm_placeName = findViewById(R.id.placeName_bottom);
         start_btn.setOnClickListener(view -> {
 
             NavigationLauncher.startNavigation(this, NavigationLauncherOptions.builder().directionsRoute(currentRoute).shouldSimulateRoute(false).build());
@@ -104,7 +140,56 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            }
 //        });
 
-    }
+        Intent intent = getIntent();
+        placeType = intent.getStringExtra("placeType");
+        currLAT = Double.valueOf(intent.getStringExtra("mylat"));
+        currLONG = Double.valueOf(intent.getStringExtra("mylng"));
+        btm_placeName.setText(placeType + " Near You ");
+        MapsInitializer.initialize(getApplicationContext());
+
+
+        AsyncGetPlaces myTask = new AsyncGetPlaces();
+        myTask.execute();
+
+
+        toggle_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                } else {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+        });
+
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(View view, int newState) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    toggle_btn.setChecked(true);
+                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    toggle_btn.setChecked(false);
+                }
+            }
+
+            @Override
+            public void onSlide(View view, float v) {
+
+            }
+        });
+
+
+        placesRecyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
+
+    }//onCreateEnds
 
     @Override
     public boolean onMapClick(@NonNull LatLng point) {
@@ -115,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         destinationMarker = mapboxMap.addMarker(new MarkerOptions().position(point));
         destinationPostion = Point.fromLngLat(point.getLongitude(), point.getLatitude());
-        originPosition = Point.fromLngLat(this.locationComponent.getLastKnownLocation().getLongitude(), this.locationComponent.getLastKnownLocation().getLatitude());
+        originPosition = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(), locationComponent.getLastKnownLocation().getLatitude());
         getRoute(originPosition, destinationPostion);
 
 
@@ -132,12 +217,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onStyleLoaded(@NonNull Style style) {
 
-                enableLocationComponent(style);
+                enableLocationComponent();
+
 
             }
         });
+//        mapboxMap.setStyle(Style.LIGHT);
+
         this.mapboxMap = mapboxMap;
         mapboxMap.addOnMapClickListener(this);
+
+
+//        if (locationComponent == null) {
+//            mapboxMap.setStyle(Style.LIGHT);
+//            enableLocationComponent();
+//        }
+
 
     }
 
@@ -179,14 +274,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @SuppressLint("WrongConstant")
-    private void enableLocationComponent(@NonNull Style loadedMapStyle) {
+    private void enableLocationComponent() {
+
         if (PermissionsManager.areLocationPermissionsGranted(this)) {
 
             this.locationComponent = this.mapboxMap.getLocationComponent();
-            this.locationComponent.activateLocationComponent(LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
+            this.locationComponent.activateLocationComponent(LocationComponentActivationOptions.builder(this, mapboxMap.getStyle()).build());
             this.locationComponent.setLocationComponentEnabled(true);
             this.locationComponent.setCameraMode(24);
             this.locationComponent.setRenderMode(4);
+
+            Log.d(TAG, "enableLocationComponent:  LocationComponent SET!");
             return;
         } else {
             permissionsManager = new PermissionsManager(this);
@@ -203,7 +301,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onPermissionResult(boolean granted) {
         if (granted) {
-            enableLocationComponent(mapboxMap.getStyle());
+
+            enableLocationComponent();
         }
     }
 
@@ -227,6 +326,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onStart() {
         super.onStart();
         mapView.onStart();
+
     }
 
     @Override
@@ -268,7 +368,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
          */
         StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlaceUrl.append("location=" + latitude + "," + longitude);
-        googlePlaceUrl.append("&radius=" + 10000);
+        googlePlaceUrl.append("&radius=" + 1000);
+        googlePlaceUrl.append("&type=" + placeType);
         googlePlaceUrl.append("&sensor=" + true);
         googlePlaceUrl.append("&key=" + "AIzaSyDlu4ZCkLzXFaHiRIZ5Z6xHozoEZLjgJ0Q");
 
@@ -279,9 +380,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    private void nearByPlaces(final String placeType) {
+    private void nearByPlaces(final String _placeType) {
 
-        String url = getURL(locationComponent.getLastKnownLocation().getLatitude(), locationComponent.getLastKnownLocation().getLongitude(), placeType);
+
+//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=30.328093,-81.4855&radius=1000&type=market&sensor=true&key=AIzaSyDlu4ZCkLzXFaHiRIZ5Z6xHozoEZLjgJ0Q
+        String url = getURL(currLAT, currLONG, placeType);
         mServices.getNearByPlaces(url).enqueue(new Callback<MyPlaces>() {
             @Override
             public void onResponse(Call<MyPlaces> call, Response<MyPlaces> response) {
@@ -292,44 +395,60 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         double lat_ = googlePlace.getGeometry().getLocation().getLat();
                         double lng_ = googlePlace.getGeometry().getLocation().getLng();
                         String placeName = googlePlace.getName();
-                        String vicinity = googlePlace.getVicinity();
-                        com.google.android.gms.maps.model.LatLng latLng = new com.google.android.gms.maps.model.LatLng(lat_, lng_);
-                        markerOptions.position(latLng);
-                        markerOptions.title(placeName);
-
-                        switch (placeType) {
-                            case "restaurant":
-                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                                break;
-
-                            case "school":
-                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                                break;
-
-                            case "market":
-                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                                break;
+                        int rating;
+                        if (googlePlace.getRating() == null) {
+                            rating = 3;
+                        } else {
+                            rating = googlePlace.getRating().intValue();
                         }
+
+                        String placeIcon = googlePlace.getIcon();
+                        String vicinity = googlePlace.getVicinity();
+                        Log.d(TAG, "onResponse: " + placeIcon + "Vicinity : " + vicinity + "Rating :" + rating);
+                        Place currPlace = new Place(lat_, lng_, placeName, vicinity, rating, placeIcon);
+                        dataList.add(currPlace);
+
                         //----------------SET MARKER-----------------
 //                        gMarker = mapboxMap.addMarker(markerOptions);
 //                        gMarker.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 //                        gMarker.animateCamera(CameraUpdateFactory.zoomTo(12));
 
 
-                        CameraPosition position = new CameraPosition.Builder()
-                                .target(new LatLng(lat_, lng_)) // Sets the new camera position
-                                .zoom(17) // Sets the zoom
-                                .bearing(180) // Rotate the camera
-                                .tilt(30) // Set the camera tilt
-                                .build();
+//
+//                        switch (_placeType) {
+//                            case "restaurant":
+//                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+//
+//                                break;
+//
+//                            case "school":
+//                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+//                                break;
+//
+//                            case "market":
+//                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+//                                break;
+//                        }
+//
+//                        CameraPosition position = new CameraPosition.Builder()
+//                                .target(new LatLng(lat_, lng_)) // Sets the new camera position
+//                                .zoom(15) // Sets the zoom
+//                                .bearing(180) // Rotate the camera
+//                                .tilt(30) // Set the camera tilt
+//                                .build();
+//
+//                        LatLng latLng1 = new LatLng(lat_, lng_);
+//                        gMarker = mapboxMap.addMarker(new MarkerOptions().position(latLng1));
+//                        gMarker.setTitle(placeName);
+//                        mapboxMap.animateCamera(CameraUpdateFactory
+//                                .newCameraPosition(position), 7000);
 
-                        LatLng latLng1 = new LatLng(lat_, lng_);
-                        gMarker = mapboxMap.addMarker(new MarkerOptions().position(latLng1));
-
-                        mapboxMap.animateCamera(CameraUpdateFactory
-                                .newCameraPosition(position), 7000);
 
                     }
+
+                    bottomLoading.setVisibility(GONE);
+                    placeAdapter.notifyDataSetChanged();
+                    placesRecyclerView.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -342,4 +461,78 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    @Override
+    public void onPlaceClick(int position) {
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+        if (destinationMarker != null) {
+            mapboxMap.removeMarker(destinationMarker);
+        }
+
+        Place currentPlace = dataList.get(position);
+        Log.d(TAG, "onItemClick: Clicked On " + currentPlace.getPlaceName() + "Lat : " + currentPlace.getLAT());
+        LatLng point = new LatLng(currentPlace.getLAT(), currentPlace.getLNG());
+        destinationMarker = mapboxMap.addMarker(new MarkerOptions().position(point));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(point.getLatitude(), point.getLongitude())) // Sets the new camera position
+                .zoom(15) // Sets the zoom
+                .bearing(180) // Rotate the camera
+                .tilt(30) // Set the camera tilt
+                .build();
+
+        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        destinationPostion = Point.fromLngLat(point.getLongitude(), point.getLatitude());
+        originPosition = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(), locationComponent.getLastKnownLocation().getLatitude());
+        getRoute(originPosition, destinationPostion);
+
+
+        start_btn.setEnabled(true);
+
+
+    }
+
+
+    private class AsyncGetPlaces extends AsyncTask<String, String, String> {
+
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            loadingLayout.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+
+            Log.d(TAG, "doInBackground: ==>Getting NearByPlaces =>" + placeType);
+            nearByPlaces(placeType);
+            Log.d(TAG, "doInBackground: ==>DONE! =>" + placeType);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            loadingLayout.setVisibility(GONE);
+
+
+        }
+    }
+
 }
+/*
+if (dataList != null) {
+
+                bottomLoading.setVisibility(View.GONE);
+                btm_placeName.setText(dataList.get(0).getPlaceName());
+
+                String imgUrl = dataList.get(0).getImgUrl();
+                Picasso.get()
+                        .load(imgUrl)
+                        .placeholder(R.drawable.firefighter)
+                        .error(R.drawable.ic_close)
+                        .into(btm_img);
+            }
+ */

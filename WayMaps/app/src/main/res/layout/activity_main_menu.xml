@@ -53,6 +53,7 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/hospitalBtn"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="16dp"
@@ -64,6 +65,7 @@
                     />
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/policeBtn"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="16dp"
@@ -85,18 +87,14 @@
                 android:orientation="horizontal">
 
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/firefighter"
-
-                    />
+                <TextView
+                    android:id="@+id/msgView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/schoolBtn"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="16dp"
@@ -104,6 +102,18 @@
                     android:layout_marginBottom="16dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/school"
+
+                    />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/firefighterBtn"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/firefighter"
 
                     />
 

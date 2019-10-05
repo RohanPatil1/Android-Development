@@ -42,6 +42,12 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.google.android.gms:play-services-location:11.0.4'
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    implementation 'hyogeun.github.com.colorratingbar:ColorRatingBar:1.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
 
 
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.4.0'

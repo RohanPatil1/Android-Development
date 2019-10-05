@@ -2,4 +2,11 @@
     <string name="app_name">WayMaps</string>
     <string name="access_token">pk.eyJ1IjoicHJvcm9oYW44IiwiYSI6ImNrMTd6ZGhnODFoMnAzZHBmM2xqMTJ2bGQifQ.shf5W4R7IFD3tV7vcavNUw</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_alert_no_intenet">No Internet</string>
+    <string name="msg_alert_no_internet">Internet Connection not detected.</string>
+    <string name="btn_label_refresh">Refresh</string>
+    <string name="msg_location_service_started">Service Started</string>
+    <string name="permission_rationale">Permission</string>
+    <string name="permission_denied_explanation">Permission Required</string>
+    <string name="settings">Setting</string>
 </resources>
