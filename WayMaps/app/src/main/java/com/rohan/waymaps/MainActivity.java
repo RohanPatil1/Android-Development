@@ -2,9 +2,11 @@ package com.rohan.waymaps;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -22,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -86,10 +89,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Point originPosition;
     private Marker gMarker;
     private String placeType;
-    FloatingActionButton searchFAB;
+//    FloatingActionButton searchFAB;
     Button start_btn;
     ToggleButton toggle_btn;
-    RelativeLayout loadingLayout;
+
     Double currLAT, currLONG;
     List<Place> dataList = new ArrayList<Place>();
     PlacesAdapter placeAdapter;
@@ -97,25 +100,33 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private CoordinatorLayout bottomSheetLayout;
     private RecyclerView placesRecyclerView;
     TextView btm_placeName;
+    String placeTypeDisplayName;
+    LottieAnimationView mLottieAnimationView;
 
-    RelativeLayout bottomLoading;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, getString(R.string.access_token));
         setContentView(R.layout.activity_main);
+        Typeface typeface_quicksand = Typeface.createFromAsset(getAssets(), "fonts/quicksand.ttf");
+        Typeface typeface_m_light = Typeface.createFromAsset(getAssets(), "fonts/montserratlight.ttf");
+        Typeface typeface_m_bold = Typeface.createFromAsset(getAssets(), "fonts/montserratbold.ttf");
 
 
-        bottomLoading = findViewById(R.id.bottomLoading);
-        bottomLoading.setVisibility(View.VISIBLE);
+
+
+        mLottieAnimationView = findViewById(R.id.lottie_animationView);
+        mLottieAnimationView.playAnimation();
+        mLottieAnimationView.setVisibility(View.VISIBLE);
         mapView = findViewById(R.id.mapView);
         start_btn = findViewById(R.id.button);
         mapView.getMapAsync(mapboxMap -> MainActivity.this.mapboxMap = mapboxMap);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
-        loadingLayout = findViewById(R.id.loading);
-        loadingLayout.setVisibility(View.VISIBLE);
+
+
         mServices = Constants.getGoogleServices();
         bottomSheetLayout = findViewById(R.id.bottomSheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
@@ -125,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         placesRecyclerView.setAdapter(placeAdapter);
         placesRecyclerView.setVisibility(GONE);
         btm_placeName = findViewById(R.id.placeName_bottom);
+        btm_placeName.setTypeface(typeface_m_bold);
         start_btn.setOnClickListener(view -> {
 
             NavigationLauncher.startNavigation(this, NavigationLauncherOptions.builder().directionsRoute(currentRoute).shouldSimulateRoute(false).build());
@@ -142,9 +154,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Intent intent = getIntent();
         placeType = intent.getStringExtra("placeType");
+        placeTypeDisplayName = intent.getStringExtra("placeTypeDisplayName");
         currLAT = Double.valueOf(intent.getStringExtra("mylat"));
         currLONG = Double.valueOf(intent.getStringExtra("mylng"));
-        btm_placeName.setText(placeType + " Near You ");
+        btm_placeName.setText(placeTypeDisplayName + " Near You ");
         MapsInitializer.initialize(getApplicationContext());
 
 
@@ -262,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         }
 
                         navigationMapRoute.addRoute(currentRoute);
-
+                        mLottieAnimationView.setVisibility(GONE);
                     }
 
                     @Override
@@ -270,6 +283,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
+        mLottieAnimationView.setVisibility(GONE);
 
     }
 
@@ -446,7 +462,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     }
 
-                    bottomLoading.setVisibility(GONE);
+
                     placeAdapter.notifyDataSetChanged();
                     placesRecyclerView.setVisibility(View.VISIBLE);
                 }
@@ -463,6 +479,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onPlaceClick(int position) {
+        mLottieAnimationView.setVisibility(View.VISIBLE);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
         if (destinationMarker != null) {
@@ -499,7 +516,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
-            loadingLayout.setVisibility(View.VISIBLE);
+
         }
 
         @Override
@@ -515,7 +532,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            loadingLayout.setVisibility(GONE);
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 5s = 5000ms
+                    mLottieAnimationView.setVisibility(View.GONE);
+                }
+            }, 2000);
 
 
         }

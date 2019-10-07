@@ -6,7 +6,7 @@
     <string name="msg_alert_no_internet">Internet Connection not detected.</string>
     <string name="btn_label_refresh">Refresh</string>
     <string name="msg_location_service_started">Service Started</string>
-    <string name="permission_rationale">Permission</string>
+    <string name="permission_rationale">Permission Required !</string>
     <string name="permission_denied_explanation">Permission Required</string>
     <string name="settings">Setting</string>
 </resources>

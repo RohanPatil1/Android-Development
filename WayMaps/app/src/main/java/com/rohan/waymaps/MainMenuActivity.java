@@ -13,16 +13,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.material.snackbar.Snackbar;
@@ -39,17 +47,43 @@ public class MainMenuActivity extends AppCompatActivity {
      * Code used in requesting runtime permissions.
      */
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
-
+    String[] girdplaceNames = {"SCHOOLS", "ATMs", "HOTELS", "GYM & FITNESS", "MOVIES", "SHOPPING"};
+    String[] googleplaceNames = {"school", "atm", "restaurant", "gym", "movie_theater", "shopping_mall"};
+    int[] gridplaceImg = {R.drawable.schools, R.drawable.atms, R.drawable.hotels, R.drawable.gym, R.drawable.movies, R.drawable.shopping};
 
     private boolean mAlreadyStartedService = false;
     private TextView mMsgView;
     Intent intent1;
+    GridView placesGridView;
+    Typeface typeface;
+    String placeType, placeTypeDisplayName;
+    LottieAnimationView mLottieAnimationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         mMsgView = (TextView) findViewById(R.id.msgView);
+        placesGridView = findViewById(R.id.place_gridview);
+        mLottieAnimationView = findViewById(R.id.lottie_animation_view);
+        mLottieAnimationView.playAnimation();
+        mLottieAnimationView.setVisibility(View.VISIBLE);
+        GridAdapter gridAdapter = new GridAdapter();
+        placesGridView.setAdapter(gridAdapter);
+        placesGridView.setOnItemClickListener((adapterView, view, i, l) -> {
+            placeType = googleplaceNames[i];
+            placeTypeDisplayName = girdplaceNames[i];
+            intent1.putExtra("placeType", placeType);
+            intent1.putExtra("placeTypeDisplayName", placeTypeDisplayName);
 
+
+            startActivity(intent1);
+            Log.d(TAG, "Clicked On + " + placeType);
+        });
+
+
+        typeface = Typeface.createFromAsset(getAssets(), "fonts/quicksand.ttf");
+        mMsgView.setTypeface(typeface);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
                 new BroadcastReceiver() {
@@ -61,25 +95,67 @@ public class MainMenuActivity extends AppCompatActivity {
                         if (latitude != null && longitude != null) {
                             mMsgView.setText("Details Are " + "\n Latitude : " + latitude + "\n Longitude: " + longitude);
 
-                            intent1 =new Intent(MainMenuActivity.this,MainActivity.class);
-                            intent1.putExtra("mylat",latitude);
-                            intent1.putExtra("mylng",longitude);
-                            intent1.putExtra("placeType","school");
+                            intent1 = new Intent(MainMenuActivity.this, MainActivity.class);
+                            intent1.putExtra("mylat", latitude);
+                            intent1.putExtra("mylng", longitude);
+
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // Do something after 5s = 5000ms
+                                    mLottieAnimationView.setVisibility(View.GONE);
+                                }
+                            }, 2000);
 
 
                         }
                     }
-                }, new IntentFilter(LocationService.ACTION_LOCATION_BROADCAST)
+                }
+                , new IntentFilter(LocationService.ACTION_LOCATION_BROADCAST)
         );
 
-        CircleImageView hos= findViewById(R.id.hospitalBtn);
-        hos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent1);
-            }
-        });
+//        CircleImageView hos= findViewById(R.id.hospitalBtn);
+//        hos.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(intent1);
+//            }
+//        });
 
+    }
+
+
+    public class GridAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return gridplaceImg.length;
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            View view1 = getLayoutInflater().inflate(R.layout.place_grid_item_layout, null);
+            //getting view in row_data
+            TextView name = view1.findViewById(R.id.place_grid_name);
+            name.setTypeface(typeface);
+            ImageView image = view1.findViewById(R.id.place_grid_img);
+
+            name.setText(girdplaceNames[i]);
+            image.setImageResource(gridplaceImg[i]);
+            return view1;
+
+
+        }
     }
 
 

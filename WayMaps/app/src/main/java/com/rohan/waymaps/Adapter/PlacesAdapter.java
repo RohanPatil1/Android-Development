@@ -1,6 +1,7 @@
 package com.rohan.waymaps.Adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,17 +59,23 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
-        TextView txt,vicinity;
+        TextView txt, vicinity;
         hyogeun.github.com.colorratingbarlib.ColorRatingBar ratingBar;
         OnPlaceClickListener onPlaceClickListener;
 
         public MyViewHolder(@NonNull View itemView, OnPlaceClickListener onPlaceClickListener) {
             super(itemView);
-
+            Typeface typeface_quicksand = Typeface.createFromAsset(context.getAssets(), "fonts/quicksand.ttf");
+            Typeface typeface_m_light = Typeface.createFromAsset(context.getAssets(), "fonts/montserratlight.ttf");
+            Typeface typeface_m_bold = Typeface.createFromAsset(context.getAssets(), "fonts/montserratbold.ttf");
 
             txt = itemView.findViewById(R.id.placeName);
             vicinity = itemView.findViewById(R.id.placeVicinity);
             ratingBar = itemView.findViewById(R.id.placeRating);
+
+            txt.setTypeface(typeface_m_light);
+            vicinity.setTypeface(typeface_quicksand);
+
             this.onPlaceClickListener = onPlaceClickListener;
             itemView.setOnClickListener(this);
         }
