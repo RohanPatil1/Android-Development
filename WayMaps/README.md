@@ -8,8 +8,7 @@
 - Location Services
 - Lottie Animation 
 
-#Why Two Different Maps SDK(Mapbox,Google Maps)?
-
+# Why Two Different Maps SDK(Mapbox,Google Maps)?
 **Answer:** Using Mapbox,we can have different map styles,navigation routes with their UI.
 But,MapBox does not have any API that can give us data about the nearby places,for example,we can't get the list of hospitals 
 near the user's location with Mapbox.So I used Google Maps Places API which provide the data used in this App.So
