@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:scaleType="centerCrop" />
+
+
+    <Button
+        android:id="@+id/selectImgBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Select Image" />
+
+    <Button
+        android:id="@+id/uploadImgBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+
+        android:text="Get Text From Image" />
+
+
+
+    <TextView
+        android:layout_marginTop="8dp"
+android:gravity="center_horizontal"
+        android:id="@+id/resultTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#000"
+        android:text="Result text"
+        android:textStyle="bold"
+        android:textSize="24sp" />
+
+</LinearLayout>
