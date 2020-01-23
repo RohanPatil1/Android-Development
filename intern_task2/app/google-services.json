@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "328144881782",
+    "firebase_url": "https://intact-task.firebaseio.com",
+    "project_id": "intact-task",
+    "storage_bucket": "intact-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328144881782:android:614581e9220628d375b757",
+        "android_client_info": {
+          "package_name": "com.rohan.intern_task2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328144881782-2fg7bgo1no11mkucv9gcdurg9tsut8bl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rohan.intern_task2",
+            "certificate_hash": "424c07c28b0b0cb03b4bdd4c530eae34ac2c7903"
+          }
+        },
+        {
+          "client_id": "328144881782-bgruauth05vactvve7q6300mgasbbg9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwpsMWewZOouAqSaRo7WqQuJgpj02wDn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328144881782-bgruauth05vactvve7q6300mgasbbg9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
