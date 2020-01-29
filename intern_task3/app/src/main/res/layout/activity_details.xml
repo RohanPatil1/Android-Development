@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.DetailsActivity">
+
+    <ImageView
+        android:id="@+id/detailsIMV"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/detailsNameTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailsIMV"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="-80dp"
+        android:elevation="33dp"
+        android:text="Hotel Name"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="48sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/detailsIMV"
+        android:layout_marginLeft="12dp"
+        android:elevation="44dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/detailsRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="-3dp"
+            android:layout_marginRight="-3dp"
+            android:layout_marginTop="10dp"
+            android:rating="2.5"
+            app:mrb_progressTint="#FFEB3B"
+            app:mrb_secondaryProgressTint="#E0E0E0"
+            />
+
+
+            <TextView
+                android:id="@+id/detailsRatingValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.7"
+
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="16dp"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/detailsAddressTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:elevation="33dp"
+            android:textColor="#000"
+            android:fontFamily="sans-serif-light"
+            android:text="Address : 1st Floor, Chandiwala Heritage, Opposite Goregaon Central Mall, Goregaon West, Mumbai"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/detailsCuisineTV"
+            android:layout_marginTop="26dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="33dp"
+            android:textColor="#000"
+
+            android:fontFamily="sans-serif-light"
+            android:text="Cuisines : North Indian, BBQ, Kebab"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/detailsTimingTV"
+            android:layout_marginTop="26dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="33dp"
+            android:textColor="#000"
+            android:fontFamily="sans-serif-light"
+            android:text="12noon – 3:30pm, 7pm – 12midnight (Mon-Sat),12noon – 4pm, 7pm – 12midnight (Sun)"
+            android:textSize="20sp" />
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
