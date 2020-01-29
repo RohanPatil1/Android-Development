@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "177605184764",
+    "firebase_url": "https://potholefinder-86973.firebaseio.com",
+    "project_id": "potholefinder-86973",
+    "storage_bucket": "potholefinder-86973.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177605184764:android:8d34de0f658c0e53351b79",
+        "android_client_info": {
+          "package_name": "com.rohan.potholesfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177605184764-1n5ohdu9atpno7233iepiug01il8s8dd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rohan.potholesfinder",
+            "certificate_hash": "424c07c28b0b0cb03b4bdd4c530eae34ac2c7903"
+          }
+        },
+        {
+          "client_id": "177605184764-dkrl4a5is4aeok0khpfp06hcdii4j9q3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC66NpfSLrIBlfa8jpd8bRBXzfuXJ2ExhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177605184764-dkrl4a5is4aeok0khpfp06hcdii4j9q3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

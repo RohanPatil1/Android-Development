@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.LoginActivity">
+
+
+<!--    <ImageView-->
+<!--        android:layout_width="280dp"-->
+<!--        android:layout_height="180dp"-->
+<!--        android:layout_above="@id/siginLL"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:src="@drawable/logo" />-->
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/signin_emailET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/signin_passwordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/signinBTN"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:text="Sign In"
+            android:theme="@style/ButtonStyle" />
+
+
+        <TextView
+            android:id="@+id/signupTV"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="Don't have account? SignUp!"
+            />
+
+<!--        <Button-->
+<!--            android:id="@+id/BTNloginByFB"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:background="@drawable/btn_signin_facebook"-->
+<!--            android:text="@string/signin_facebook"-->
+<!--            android:textColor="@color/colorWhite" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/BTNloginByGmail"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:layout_marginBottom="80dp"-->
+<!--            android:background="@drawable/btn_signin_google"-->
+<!--            android:text="@string/signin_google"-->
+<!--            android:textColor="@color/colorWhite" />-->
+
+
+    </LinearLayout>
+</RelativeLayout>
