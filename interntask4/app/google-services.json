@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "399490331046",
+    "firebase_url": "https://interntask4.firebaseio.com",
+    "project_id": "interntask4",
+    "storage_bucket": "interntask4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399490331046:android:c86fd8898cf543521f5f67",
+        "android_client_info": {
+          "package_name": "com.rohan.interntask4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399490331046-accchlcp3vh1iecodmm4ikeu1dum5prr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rohan.interntask4",
+            "certificate_hash": "424c07c28b0b0cb03b4bdd4c530eae34ac2c7903"
+          }
+        },
+        {
+          "client_id": "399490331046-in932g7lt5dsu5k7hlg79u0uukkns01l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5m54LTUw6qLWKCuOtR5zTXrShALgZKg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399490331046-in932g7lt5dsu5k7hlg79u0uukkns01l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
