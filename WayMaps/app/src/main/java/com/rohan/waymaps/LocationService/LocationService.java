@@ -21,11 +21,6 @@ import com.google.android.gms.location.LocationServices;
 
 
 
-
-/**
- * Created by devdeeds.com on 27-09-2017.
- */
-
 public class LocationService extends Service implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
@@ -125,7 +120,7 @@ public class LocationService extends Service implements
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.d(TAG, "Failed to connect to Google API");
+            Log.d(TAG, "Failed to connect to Google API");
 
     }
 }
