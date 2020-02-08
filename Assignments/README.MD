@@ -16,7 +16,7 @@
 
 
  # Working
- ![s1image](https://s5.gifyu.com/images/ezgif-3-6a8dff4da8f5.gif) 
+ ![s1image](![Er8Zn8](https://i.makeagif.com/media/2-02-2020/Er8Zn8.gif)) 
  
  **After Proper Credentials, This How The Admin Uploads Files To Firebase**
  
