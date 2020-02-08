@@ -376,16 +376,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     //-----------GoogleMaps API------------
     private String getURL(double latitude, double longitude, String placeType) {
-        /*
-        https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=30.328093,-81.4855&
-        radius=1000&type=market&sensor=true&key=AIzaSyDlu4ZCkLzXFaHiRIZ5Z6xHozoEZLjgJ0Q
-         */
+   
         StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlaceUrl.append("location=" + latitude + "," + longitude);
         googlePlaceUrl.append("&radius=" + 1000);
         googlePlaceUrl.append("&type=" + placeType);
         googlePlaceUrl.append("&sensor=" + true);
-        googlePlaceUrl.append("&key=" + "AIzaSyDlu4ZCkLzXFaHiRIZ5Z6xHozoEZLjgJ0Q");
+        //API Key Removed purposely
+        googlePlaceUrl.append("&key=" + "PUT YOUR OWN API KEY HERE");
 
         Log.d("WayMaps", "getURL: " + googlePlaceUrl);
 
