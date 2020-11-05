@@ -8,6 +8,6 @@
  
 
  # Working
- ![s1image](/preview/wewu.gif) 
+ ![s1image](https://thumbs.gfycat.com/MindlessWhoppingFlycatcher-size_restricted.gif) 
  
 
