@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<egolabsapps.basicodemine.videolayout.VideoLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/videoLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:loop="true"
+    app:path_or_url="clip.mp4"
+    app:sound="true"
+    tools:context=".ui.view.DetailsActivity">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/search_city_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:background="@drawable/search_bg"
+            android:fontFamily="@font/aclonica"
+            android:hint="Type your city"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+
+        <ImageView
+            android:id="@+id/search_btn"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:paddingRight="10dp"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:id="@+id/weatherViewLL"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cityTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aclonica"
+                android:text="Mumbai,India"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/dateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway"
+                android:text="15 November,2020"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <!--                app:cardBackgroundColor="#6BFFFFFF"-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="260dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:background="#72E0E0E0"
+                android:backgroundTint="#72E0E0E0"
+                android:elevation="16dp"
+                app:cardCornerRadius="28dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#00E0E0E0"
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/weatherIconIMV"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background" />
+
+
+                    <TextView
+                        android:id="@+id/weatherTypeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/architectsdaughter"
+                        android:paddingLeft="8dp"
+
+                        android:paddingRight="8dp"
+                        android:paddingBottom="2dp"
+                        android:text="Clouds"
+                        android:textColor="#fff"
+                        android:textSize="24sp" />
+
+
+                    <TextView
+                        android:id="@+id/weatherTempTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/aclonica"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="44 C"
+                        android:textColor="#fff"
+
+                        android:textSize="38sp" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+        <ProgressBar
+            android:id="@+id/search_progress"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+
+</egolabsapps.basicodemine.videolayout.VideoLayout>
+
