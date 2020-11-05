@@ -8,7 +8,7 @@
     app:loop="true"
     app:path_or_url="clip.mp4"
     app:sound="true"
-    tools:context=".ui.view.DetailsActivity">
+    tools:context=".ui.view.MainActivity">
 
     <RelativeLayout
 
@@ -71,19 +71,17 @@
                 android:text="15 November,2020"
                 android:textAlignment="center"
                 android:textColor="#fff"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <!--                app:cardBackgroundColor="#6BFFFFFF"-->
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="260dp"
+            <FrameLayout
+                android:layout_width="180dp"
+                android:layout_height="280dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="16dp"
-                android:background="#72E0E0E0"
-                android:backgroundTint="#72E0E0E0"
-                android:elevation="16dp"
-                app:cardCornerRadius="28dp">
+                android:background="@drawable/card_bg"
+                android:elevation="16dp">
 
 
                 <LinearLayout
@@ -137,7 +135,7 @@
                 </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
+            </FrameLayout>
 
 
         </LinearLayout>

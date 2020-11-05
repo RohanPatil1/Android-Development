@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><!--  res/drawable/edittext_rounded_corners.xml -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item >
-        <shape>
-            <gradient android:angle="270" android:centerColor="#4DFFFFFF" android:endColor="#4DFFFFFF" android:startColor="#4DFFFFFF" />
-
-            <corners android:radius="25dp" />
-        </shape>
-    </item>
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#72E0E0E0"/>
 
 
-</selector>
+
+    <padding android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp"/>
+
+    <corners android:radius="16dp" />
+</shape>

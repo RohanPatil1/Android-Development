@@ -1,5 +1,7 @@
 package com.rohan.weatheringwithu.ui.view
 
+import android.app.Activity
+import android.content.Context
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import com.rohan.weatheringwithu.data.repository.MainRepository
 import com.rohan.weatheringwithu.ui.view_model.MainViewModel
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -54,6 +57,7 @@ class MainActivity : AppCompatActivity() {
 
             mainViewModel.searchWeather(search_city_et.text.toString())
             search_city_et.setText("")
+            search_city_et.hideKeyboard()
         }
 
         mainViewModel.showLoading.observe(this, Observer {
@@ -115,5 +119,8 @@ class MainActivity : AppCompatActivity() {
         return Calendar.getInstance().time
     }
 
-
+    fun View.hideKeyboard() {
+        val inputM = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputM.hideSoftInputFromWindow(windowToken, 0)
+    }
 }
