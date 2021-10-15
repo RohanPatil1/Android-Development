@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">TriviaTrack</string>
+
+    <string-array name="category_options_list">
+        <item>Any Category</item>
+        <item>General Knowledge</item>
+        <item>Books</item>
+        <item>Film</item>
+        <item>Music</item>
+        <item>Entertainment: Musicals and Theatres</item>
+        <item>Television</item>
+        <item>Video Games</item>
+        <item>Board Games</item>
+        <item>Science and Nature</item>
+        <item>Computers</item>
+        <item>Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+    </string-array>
+
+
+    <string-array name="difficulty_options_list">
+        <item>Any Difficulty</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+
+    <string-array name="type_options_list">
+        <item>Any Type</item>
+        <item>Multiple Choice</item>
+        <item>True / False</item>
+    </string-array>
+
+</resources>
